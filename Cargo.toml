@@ -1,0 +1,17 @@
+[package]
+name = "do-rs"
+version = "0.5.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+config = "0.14.0"
+execute = "0.2.13"
+log = "0.4.20"
+
+[profile.dev]
+opt-level = 0
+
+[profile.release]
+opt-level = 3
