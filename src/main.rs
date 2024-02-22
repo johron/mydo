@@ -12,7 +12,7 @@ fn main() {
         process::exit(1);
     }
     
-    if !path::Path::new("config.json").exists() {
+    if !path::Path::new("/etc/do-rs/config.json").exists() {
         eprintln!("Error: Config file does not exist.");
         process::exit(1);
     }
