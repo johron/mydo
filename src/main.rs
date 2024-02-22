@@ -18,11 +18,14 @@ fn main() {
     }
     
     match parameters[0].as_str() {
-        "auto" => cmd::auto::auto(&mut parameters),
-        "man" => cmd::man::man(&parameters),
-        _ => {
-            eprintln!("Error: Unrecognized command: {}", parameters[0]);
-            process::exit(1);
-        }
+        "auto" => {
+            parameters.remove(0);
+            cmd::auto::auto(&mut parameters);
+        },
+        // "man" => {
+        //     parameters.remove(0);
+        //     cmd::man::man(&parameters);
+        // },
+        _ => cmd::auto::auto(&mut parameters),
     }
 }

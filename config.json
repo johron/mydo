@@ -1,13 +1,13 @@
 {
-  "settings": {},
+  "settings": {
+    "show_compilation_time": true
+  },
   "presets": {
     "py": [
-      "/usr/bin/python3",
-      "{file}"
+      "/usr/bin/python3"
     ],
     "js": [
-      "/usr/bin/node",
-      "{file}"
+      "/usr/bin/node"
     ]
   }
 }
