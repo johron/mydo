@@ -1,7 +1,7 @@
 mod cmd;
 mod util;
 
-use std::{process, env, path};
+use std::{process, env};
 
 fn main() {
     let mut parameters: Vec<String> = env::args().collect();
@@ -9,11 +9,6 @@ fn main() {
     
     if parameters.len().clone() == 0 {
         eprintln!("do-rs cli unspecified development version");
-        process::exit(1);
-    }
-    
-    if !path::Path::new("/etc/do-rs/config.json").exists() {
-        eprintln!("Error: Config file does not exist.");
         process::exit(1);
     }
     

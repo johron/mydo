@@ -17,12 +17,12 @@ pub fn auto(parameters: &mut Vec<String>) {
         for (preset, args) in presets.unwrap() {
             if file.ends_with(preset.as_str()) {
                 if args.get(1) == Some(&Value::Null) {
-                    eprintln!("Error: No argument for the file to run in config.json");
+                    eprintln!("Error: No argument for the file to run in do.json");
                     println!("Fix: See documentation when that is a thing");
                     process::exit(1);
                 }
 
-                let runner = &args[0].as_str().expect("Expected a string").replace("{file}", file);
+                let runner = &args[0].as_str().expect("Expected a string").replace("{file}", file).replace("{output}", file.split(".").collect::<Vec<&str>>()[0]);
                 let mut to_pass: Vec<&str> = runner.split(" ").collect();
                 let binding = process::Command::new(to_pass[0]);
                 let mut cmd = binding;
