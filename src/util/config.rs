@@ -5,7 +5,7 @@ fn get_path() -> &'static str {
     if path::Path::new("do.json").exists() {
         return "do.json";
     } else if path::Path::new("/etc/do-rs/do.json").exists() {
-        return  "/etc/do-rs/do.json";
+        return "/etc/do-rs/do.json";
     } else {
         eprintln!("Error: Config file does not exist.");
         process::exit(1);

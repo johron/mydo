@@ -8,7 +8,7 @@ fn main() {
     parameters.remove(0); // Remove the do-rs executable from arguments
     
     if parameters.len().clone() == 0 {
-        eprintln!("do-rs cli unspecified development version");
+        eprintln!("do-rs cli v1.0");
         process::exit(1);
     }
     
