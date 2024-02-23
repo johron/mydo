@@ -1,11 +1,17 @@
-use std::{fs, process, path};
+use std::{fs, process, path, env};
 use serde_json::{Map, Value};
 
-fn get_path() -> &'static str {
-    if path::Path::new("do.json").exists() {
-        return "do.json";
-    } else if path::Path::new("/etc/do-rs/do.json").exists() {
-        return "/etc/do-rs/do.json";
+fn get_path() -> String {
+    let home = env::var("HOME").unwrap().to_string();
+    
+    let from_root = "do.json";
+    let binding = home + "/.do-rs/do.json";
+    let from_home = binding.as_str();
+    
+    if path::Path::new(from_root).exists() {
+        return from_root.to_string();
+    } else if path::Path::new(from_home).exists() {
+        return from_home.to_string();
     } else {
         eprintln!("Error: Config file does not exist.");
         process::exit(1);
