@@ -22,20 +22,23 @@ pub fn auto(parameters: &mut Vec<String>) {
                     process::exit(1);
                 }
 
-                let runner = &args[0].as_str().expect("Expected a string");
-                let binding = process::Command::new(runner);
+                let runner = &args[0].as_str().expect("Expected a string").replace("{file}", file);
+                let mut to_pass: Vec<&str> = runner.split(" ").collect();
+                let binding = process::Command::new(to_pass[0]);
                 let mut cmd = binding;
-                cmd.args([file]);
+                
+                to_pass.remove(0);
+                cmd.args(to_pass);
 
                 let now = time::SystemTime::now();
                 cmd.execute_output().unwrap().stdout;
 
-                let show_compilation_time = util::config::get_setting("show_compilation_time");
+                let show_compilation_time = util::config::get_setting("show_time");
                 if show_compilation_time.unwrap() == true {
                     println!("Time taken: {}ms", now.elapsed().unwrap().as_millis());
                 }
 
-                found = true
+                found = true;
             }
         }
 
@@ -51,7 +54,7 @@ pub fn auto(parameters: &mut Vec<String>) {
         let now = time::SystemTime::now();
         cmd.execute_output().unwrap().stdout;
 
-        let show_compilation_time = util::config::get_setting("show_compilation_time");
+        let show_compilation_time = util::config::get_setting("show_time");
         if show_compilation_time.unwrap() == true {
             println!("Time taken: {}ms", now.elapsed().unwrap().as_millis());
         }

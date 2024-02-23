@@ -2,7 +2,7 @@ use std::{fs, process};
 use serde_json::{Map, Value};
 
 pub fn get_presets() -> Option<Map<String, Value>> {
-    let binding = fs::read_to_string("config.json")
+    let binding = fs::read_to_string("/etc/do-rs/config.json")
         .unwrap_or_else(|err| panic!("Failed to read config file: {}", err));
 
     let config: Value = serde_json::from_str(&binding)
