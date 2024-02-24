@@ -44,7 +44,7 @@ cargo build --release
   "inits": {
     "python": "{home}/python3.tar",
     "rust": "{home}/.cargo/bin/cargo init",
-    "node": "/usr/bin/npm init"
+    "node": "https://example.com/node.tar"
   }
 }
 ```
