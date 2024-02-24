@@ -25,20 +25,23 @@ fn main() {
         show_help();
         process::exit(0);
     }
-    
-    match parameters[0].as_str() {
-        "auto" => {
-            parameters.remove(0);
-            cmd::auto::auto(&mut parameters);
-        },
-        "init" => {
-            parameters.remove(0);
-            cmd::init::init(&parameters);
-        },
-        "help" => {
-            show_help();
-            process::exit(0);
-        },
-        _ => cmd::auto::auto(&mut parameters),
+
+    if parameters[0].as_str() == "auto" {
+        parameters.remove(0);
+        cmd::auto::auto(&mut parameters);
+    } else if parameters[0].as_str() == "init" {
+        parameters.remove(0);
+        cmd::init::init(&parameters);
+    } else if parameters[0].as_str() == "run" {
+        parameters.remove(0);
+        cmd::run::run(&mut  parameters);
+    } else if parameters[0].as_str() == "build" {
+        parameters.remove(0);
+        cmd::build::build(&mut parameters);
+    } else if parameters[0].as_str() == "help" {
+        show_help();
+        process::exit(0);
+    } else {
+        cmd::auto::auto(&mut parameters);
     }
 }

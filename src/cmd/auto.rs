@@ -1,4 +1,4 @@
-use std::{process, time};
+use std::{path, process, time};
 use execute::Execute;
 
 use crate::util;
@@ -6,6 +6,12 @@ use crate::util;
 pub fn auto(parameters: &mut Vec<String>) {
     let presets = util::config::get_presets();
     let file = &parameters[0];
+    
+    if !path::Path::new(file).exists() {
+        eprintln!("Error: Specified file does not exist: {}", file);
+        process::exit(1);
+    }
+    
     let mut found = false;
 
     let shebang = util::shebang::get_shebang(&file).unwrap_or("None".parse().unwrap());
@@ -14,13 +20,9 @@ pub fn auto(parameters: &mut Vec<String>) {
     
     if shebang == "None" {
         for (key, preset) in presets.unwrap() {
+            if key == "run" || key == "build" {}
+            
             if file.ends_with(key.as_str()) {
-                /*if args.get(1) == Some(&Value::Null) {
-                    eprintln!("Error: No argument for the file to run in do.json");
-                    println!("Fix: See documentation when that is a thing");
-                    process::exit(1);
-                }*/
-
                 let runner = preset.as_str()
                     .expect("Expected a string")
                     .replace("{file}", file)
@@ -40,7 +42,7 @@ pub fn auto(parameters: &mut Vec<String>) {
 
                 let show_compilation_time = util::config::get_setting("show_time");
                 if show_compilation_time.unwrap() == true {
-                    println!("Time taken: {}ms", now.elapsed().unwrap().as_millis());
+                    println!("Time taken: {:.2}s", now.elapsed().unwrap().as_secs_f32());
                 }
 
                 found = true;
@@ -48,7 +50,7 @@ pub fn auto(parameters: &mut Vec<String>) {
         }
 
         if !found {
-            println!("Error: No preset found or file not found: '{}'", file);
+            println!("Error: No preset found for '{}'", file);
             process::exit(1)
         }
     } else {
@@ -61,7 +63,7 @@ pub fn auto(parameters: &mut Vec<String>) {
 
         let show_compilation_time = util::config::get_setting("show_time");
         if show_compilation_time.unwrap() == true {
-            println!("Time taken: {}ms", now.elapsed().unwrap().as_millis());
+            println!("Time taken: {:.2}s", now.elapsed().unwrap().as_secs_f32());
         }
     }
 }

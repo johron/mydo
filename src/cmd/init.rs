@@ -1,5 +1,8 @@
 use std::{process, fs};
+use std::io::{Write};
 use execute::Execute;
+use curl::easy;
+
 use crate::util;
 
 pub fn init(args: &Vec<String>) {
@@ -17,8 +20,27 @@ pub fn init(args: &Vec<String>) {
     let mut to_pass: Vec<&str> = binding.split(" ").collect();
     
     if to_pass[0].starts_with("https://") || args[0].starts_with("http://") { // this is an init package to download
-        println!("Error: Online inits not implemented");
-        process::exit(1);
+        let mut dst = Vec::new();
+        let mut easy = easy::Easy::new();
+        easy.url(to_pass[0]).unwrap();
+        let _redirect = easy.follow_location(true);
+        {
+            let mut transfer = easy.transfer();
+            transfer.write_function(|data| {
+                dst.extend_from_slice(data);
+                Ok(data.len())
+            }).unwrap();
+            transfer.perform().unwrap();
+        }
+        {
+            let file = fs::File::create("./init.tar");
+            file.expect("download error").write_all(dst.as_slice()).expect("different donwload error");
+            
+        }
+
+        let mut tar = tar::Archive::new(fs::File::open("./init.tar").unwrap());
+        tar.unpack(".").unwrap();
+        let _ = fs::remove_file("./init.tar");
     } else if to_pass[0].ends_with(".tar") { // local init package to copy and decompress
         let _ = fs::copy(to_pass[0], "./init.tar");
         let mut tar = tar::Archive::new(fs::File::open("./init.tar").unwrap());
