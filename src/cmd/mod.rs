@@ -1,2 +1,2 @@
 pub mod auto;
-pub mod man;
+pub mod init;

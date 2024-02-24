@@ -1,0 +1,6 @@
+{
+  "presets": {
+    "py": "/usr/bin/python3 {file}",
+    "js": "/usr/bin/node {file}"
+  }
+}
