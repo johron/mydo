@@ -12,6 +12,8 @@ fn get_path(project_root: bool) -> String {
     if project_root {
         if path::Path::new(from_root).exists() {
             return from_root.to_string();
+        } else if path::Path::new(from_home).exists() {
+            return from_home.to_string();
         } else {
             eprintln!("Error: Config file does not exist.");
             process::exit(1);

@@ -37,7 +37,7 @@ cargo build --release
     "show_time": true
   },
   "presets": {
-    "py": "/usr/bin/python {file}",
+    "py": "/usr/bin/python3 {file}",
     "js": "/usr/bin/node {file}",
     "c": "/usr/bin/gcc {file} -o {output}"
   },
