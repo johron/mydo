@@ -1,7 +1,5 @@
 # do-rs
-- my first rust project so this is probably not very efficient
-- and it uses a lot of large crates so i makes very large
-- binaries
+- my first rust project so this is probably not very efficient and it uses a lot of large crates so i makes very large binaries.
 
 ## Features
 - run files without needing to put in args every time
