@@ -19,13 +19,13 @@ mydo help
 ### Compile from source
 #### build debug 
 ```bash
-git clone https://github.com/johanrong/mydo.git
+git clone https://github.com/johron/mydo.git
 cd mydo
 cargo build
 ```
 #### build release
 ```bash
-git clone https://github.com/johanrong/mydo.git
+git clone https://github.com/johron/mydo.git
 cd mydo
 cargo build --release
 ```
@@ -39,13 +39,11 @@ cargo build --release
   },
   "presets": {
     "py": "/usr/bin/python3 {file}",
-    "js": "/usr/bin/node {file}",
-    "c": "/usr/bin/gcc {file} -o {output}"
+    "js": "/usr/bin/node {file}"
   },
   "inits": {
-    "python": "{home}/python3.tar",
-    "rust": "{home}/.cargo/bin/cargo init",
-    "node": "https://example.com/node.tar"
+    "python3": "{home}/.mydo/inits/python3.tar",
+    "node": "{home}/.mydo/inits/node.tar"
   }
 }
 ```
@@ -57,8 +55,8 @@ cargo build --release
   "presets": {
     "run": "{home}/.cargo/bin/cargo run",
     "build": "{home}/.cargo/bin/cargo build",
-    "py": "/usr/bin/python3 {file}",
-    "js": "/usr/bin/node {file}"
+    "js": "/usr/bin/node {file}",
+    "ts": "https://example.com/inits/ts.tar"
   }
 }
 
