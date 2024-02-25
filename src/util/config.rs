@@ -5,8 +5,8 @@ use crate::util;
 fn get_path(project_root: bool) -> String {
     let home = util::home::get_home().to_string();
 
-    let from_root = "do.json";
-    let binding = home + "/.do-rs/do.json";
+    let from_root = "mydo.json";
+    let binding = home + "/.mydo/mydo.json";
     let from_home = binding.as_str();
 
     if project_root {
@@ -15,14 +15,14 @@ fn get_path(project_root: bool) -> String {
         } else if path::Path::new(from_home).exists() {
             return from_home.to_string();
         } else {
-            eprintln!("Error: Config file does not exist.");
+            eprintln!("Error: Project config and home config file does not exist.");
             process::exit(1);
         }
     } else {
         if path::Path::new(from_home).exists() {
             return from_home.to_string();
         } else {
-            eprintln!("Error: Config file does not exist.");
+            eprintln!("Error: Home config file does not exist.");
             process::exit(1);
         }
     }
@@ -51,10 +51,10 @@ pub fn get_init(init: &str) -> Option<Value> {
         if let Some(init_value) = inits.get(init) {
             return Some(init_value.clone());
         } else {
-            eprintln!("Error: Init '{}' not found in do.json", init);
+            eprintln!("Error: Init '{}' not found in mydo.json", init);
         }
     } else {
-        eprintln!("Error: 'inits' object not found in do.json");
+        eprintln!("Error: 'inits' object not found in mydo.json");
     }
 
     eprintln!("Error: No data in '{}' init", init);
@@ -73,10 +73,10 @@ pub fn get_setting(setting: &str) -> Option<Value> {
         if let Some(setting_value) = settings.get(setting) {
             return Some(setting_value.clone());
         } else {
-            eprintln!("Setting '{}' not found in do.json", setting);
+            eprintln!("Setting '{}' not found in mydo.json", setting);
         }
     } else {
-        eprintln!("'settings' object not found in do.json");
+        eprintln!("'settings' object not found in mydo.json");
     }
 
     eprintln!("Error: No data in '{}' setting", setting);

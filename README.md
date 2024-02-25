@@ -1,4 +1,4 @@
-# do-rs
+# mydo
 - my first rust project so this is probably not very efficient and it uses a lot of large crates so i makes very large binaries.
 
 ## Features
@@ -9,7 +9,7 @@
 
 ## Help
 ```bash
-do help
+mydo help
 ```
 
 ## Install
@@ -19,19 +19,19 @@ do help
 ### Compile from source
 #### build debug 
 ```bash
-git clone https://github.com/johanrong/do-rs.git
-cd do-rs
+git clone https://github.com/johanrong/mydo.git
+cd mydo
 cargo build
 ```
 #### build release
 ```bash
-git clone https://github.com/johanrong/do-rs.git
-cd do-rs
+git clone https://github.com/johanrong/mydo.git
+cd mydo
 cargo build --release
 ```
 
 # Example Configuartion
-#### ~/.do-rs/do.json
+#### ~/.mydo/mydo.json
 ```json
 {
   "settings": {
@@ -51,7 +51,7 @@ cargo build --release
 ```
 - Can have all keys
 
-#### ./do.json
+#### ./mydo.json
 ```json
 {
   "presets": {

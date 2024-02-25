@@ -4,13 +4,13 @@ mod util;
 use std::{process, env};
 
 fn show_help() {
-    println!("do-rs (v{})", env!("CARGO_PKG_VERSION"));
-    println!("> do (file)");
-    println!("> do auto (file)");
+    println!("mydo (v{})", env!("CARGO_PKG_VERSION"));
+    println!("> mydodo (file)");
+    println!("> mydodo auto (file)");
     println!("  - will run this file through preset");
     println!("  - specified in config.json or if not");
     println!("  - present, run through shebang");
-    println!("> do init (init)");
+    println!("> mydo init (init)");
     println!("  - will initilaize a project from");
     println!("  - config.json, could be a local");
     println!("  - archive, init command, or");
@@ -19,7 +19,7 @@ fn show_help() {
 
 fn main() {
     let mut parameters: Vec<String> = env::args().collect();
-    parameters.remove(0); // Remove the do-rs executable from arguments
+    parameters.remove(0); // Remove the mydo executable from arguments
     
     if parameters.len().clone() == 0 {
         show_help();

@@ -1,8 +1,0 @@
-{
-  "presets": {
-    "run": "{home}/.cargo/bin/cargo run",
-    "build": "{home}/.cargo/bin/cargo build",
-    "py": "/usr/bin/python3 {file}",
-    "js": "/usr/bin/node {file}"
-  }
-}
