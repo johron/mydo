@@ -14,7 +14,9 @@ mydo help
 
 ## Install
 ### Script
-- Install script comming soon, for now download from releases or compile from source.
+```bash
+curl -fsSL http://sh.johanrong.me/mydo/install.sh | bash
+```
 
 ### Compile from source
 #### build debug 
