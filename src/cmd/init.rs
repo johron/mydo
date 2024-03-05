@@ -18,7 +18,7 @@ pub fn init(args: &Vec<String>) {
     
     let binding = init_path.replace("\"", "");
     let mut to_pass: Vec<&str> = binding.split(" ").collect();
-    
+
     if to_pass[0].starts_with("https://") || args[0].starts_with("http://") { // this is an init package to download
         let mut dst = Vec::new();
         let mut easy = easy::Easy::new();
@@ -35,7 +35,6 @@ pub fn init(args: &Vec<String>) {
         {
             let file = fs::File::create("./init.tar");
             file.expect("download error").write_all(dst.as_slice()).expect("different donwload error");
-            
         }
 
         let mut tar = tar::Archive::new(fs::File::open("./init.tar").unwrap());
