@@ -5,16 +5,16 @@ use std::{process, env};
 
 fn show_help() {
     println!("mydo (v{})", env!("CARGO_PKG_VERSION"));
-    println!("> mydodo (file)");
-    println!("> mydodo auto (file)");
+    println!("> mydo (file)");
+    println!("> mydo auto (file)");
     println!("  - will run this file through preset");
-    println!("  - specified in config.json or if not");
-    println!("  - present, run through shebang");
+    println!("    specified in config.json or if not");
+    println!("    present, run through shebang");
     println!("> mydo init (init)");
     println!("  - will initilaize a project from");
-    println!("  - config.json, could be a local");
-    println!("  - archive, init command, or");
-    println!("  - network archive to be downloaded");
+    println!("    config.json, could be a local");
+    println!("    archive, init command, or");
+    println!("    network archive to be downloaded");
 }
 
 fn main() {
