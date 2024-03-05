@@ -54,8 +54,7 @@ pub fn init(args: &Vec<String>) {
         cmd.execute_output().unwrap().stdout;
     }
 
-    let conf = r#"
-{
+    let conf = r#"{
     "presets": {}
 }
 "#;
