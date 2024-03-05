@@ -54,4 +54,12 @@ pub fn init(args: &Vec<String>) {
         cmd.args(to_pass.clone());
         cmd.execute_output().unwrap().stdout;
     }
+
+    let conf = r#"
+{
+    "presets": {}
+}
+"#;
+    
+    fs::write("mydo.json", conf).expect("Error: Something happened while writing the mydo.json file");
 }
