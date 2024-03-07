@@ -17,7 +17,7 @@ fn show_help() {
       the ~/.mydo/mydo.json config
       file.
   > mydo help
-   - Show this help message\
+    - Show this help message\
     ")
 }
 
