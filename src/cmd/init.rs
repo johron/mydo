@@ -34,7 +34,7 @@ pub fn init(args: &Vec<String>) {
         }
         {
             let file = fs::File::create("./init.tar");
-            file.expect("download error").write_all(dst.as_slice()).expect("different donwload error");
+            file.expect("Error: download error").write_all(dst.as_slice()).expect("Error: different donwload error");
         }
 
         let mut tar = tar::Archive::new(fs::File::open("./init.tar").unwrap());

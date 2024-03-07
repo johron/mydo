@@ -50,7 +50,7 @@ pub fn auto(parameters: &mut Vec<String>) {
         }
 
         if !found {
-            println!("Error: No preset found for '{}'", file);
+            eprintln!("Error: No preset found for '{}'", file);
             process::exit(1)
         }
     } else {

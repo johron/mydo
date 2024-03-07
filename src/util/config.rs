@@ -73,10 +73,10 @@ pub fn get_setting(setting: &str) -> Option<Value> {
         if let Some(setting_value) = settings.get(setting) {
             return Some(setting_value.clone());
         } else {
-            eprintln!("Setting '{}' not found in mydo.json", setting);
+            eprintln!("Error: Setting '{}' not found in mydo.json", setting);
         }
     } else {
-        eprintln!("'settings' object not found in mydo.json");
+        eprintln!("Error: 'settings' object not found in mydo.json");
     }
 
     eprintln!("Error: No data in '{}' setting", setting);
