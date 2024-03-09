@@ -6,7 +6,7 @@ use std::{process, env};
 fn show_help() {
     println!("mydo (v{})", env!("CARGO_PKG_VERSION"));
     println!("\
-    Usage: mydo [arg1] [arg2]
+    Usage: mydo [arg1..]
   > mydo [file_name]
   > mydo auto [file_name]
     - Run specified file with preset
