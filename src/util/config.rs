@@ -4,12 +4,18 @@ use crate::util;
 
 fn read_main_config() -> Value {
     let path = util::home::get_home().to_string() + "/.mydo/mydo.json";
-    
+
     let binding = fs::read_to_string(path)
-        .unwrap_or_else(|err| panic!("Failed to read config file: {}", err));
+        .unwrap_or_else(|err| {
+            eprintln!("Failed to read config JSON: {}", err);
+            process::exit(1)
+        });
 
     let config: Value = serde_json::from_str(&binding)
-        .unwrap_or_else(|err| panic!("Failed to parse config JSON: {}", err));
+        .unwrap_or_else(|err| {
+            eprintln!("Failed to parse config JSON: {}", err);
+            process::exit(1)
+        });
     
     config
 }
@@ -18,10 +24,16 @@ fn read_project_config() -> Value {
     let path = "mydo.json";
 
     let binding = fs::read_to_string(path)
-        .unwrap_or_else(|err| panic!("Failed to read config file: {}", err));
+        .unwrap_or_else(|err| {
+            eprintln!("Failed to read config JSON: {}", err);
+            process::exit(1)
+        });
 
     let config: Value = serde_json::from_str(&binding)
-        .unwrap_or_else(|err| panic!("Failed to parse config JSON: {}", err));
+        .unwrap_or_else(|err| {
+            eprintln!("Failed to parse config JSON: {}", err);
+            process::exit(1)
+        });
 
     config
 }
