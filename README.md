@@ -1,39 +1,50 @@
-# mydo
-my first rust project so this is probably not very efficient and it uses a lot of large crates so i makes very large binaries.
+# Mydo
+Easy project manager and runner written in rust.
+
+My first rust project so this is probably not very efficient and it uses a lot of large crates so i makes very large binaries.
 
 ## Features
-- run files without needing to put in args every time
-- run files with shebangs
-- initialize project easily with presets
-  - can be local, network downloaded or from commands
+- Run files without needing to put in args every time
+- Run files with shebangs
+- Initialize project easily with presets
+  - Can be local, network downloaded or from commands
 
 ## Help
 ```bash
 mydo help
 ```
 
-## Install
-### Script
+## Installation
+### Automatic: Install script
 ```bash
 curl -fsSL http://sh.johanrong.me/mydo/install.sh | bash
 ```
 
-### Compile from source
-#### build debug 
+### Manual: Compile from source
+- File structure
+  - `~/.mydo/`
+    - The `mydo.json` main configuration file located here
+  - `~/.mydo/inits/`
+    - Tar archives with initializations here
+  - `~/.mydo/bin/`
+    - The `mydo` binary located here
+
+#### Build a debug version
 ```bash
 git clone https://github.com/johron/mydo.git
 cd mydo
 cargo build
 ```
-#### build release
+#### Build a release version
 ```bash
 git clone https://github.com/johron/mydo.git
 cd mydo
 cargo build --release
 ```
 
-# Example Configuartion
-#### ~/.mydo/mydo.json
+## Example Configuartion
+#### Mydo main configuration
+`~/.mydo/mydo.json`
 ```json
 {
   "settings": {
@@ -48,12 +59,13 @@ cargo build --release
 }
 ```
 
-#### ./mydo.json
+#### Mydo project specific configuration
+`./mydo.json`
 ```json
 {
-  "presets": {
-    "run": "{home}/.cargo/bin/cargo run",
-    "build": "{home}/.cargo/bin/cargo build",
+  "run": "{home}/.cargo/bin/cargo run",
+  "build": "{home}/.cargo/bin/cargo build",
+  "runners": {
     "js": "/usr/bin/node {file}"
   }
 }

@@ -51,11 +51,23 @@ pub fn init(args: &Vec<String>) {
         
         to_pass.remove(0);
         cmd.args(to_pass.clone());
-        cmd.execute_output().unwrap().stdout;
+        
+        if let Ok(exec) = cmd.execute_output() {
+            if !exec.status.success() {
+                eprintln!("Error: Command execution failed");
+                process::exit(1);
+            }
+            exec.stdout;
+        } else {
+            eprintln!("Error: Unable to execute command");
+            process::exit(1);
+        }
     }
 
     let conf = r#"{
-    "presets": {}
+    "run": "",
+    "build": "",
+    "runners": {}
 }
 "#;
     

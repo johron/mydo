@@ -5,7 +5,7 @@ use crate::util;
 pub fn run(args: &mut Vec<String>) {
     let preset = util::config::get_run();
 
-    let runner = preset
+    let runner = preset.unwrap().as_str()
         .expect("Expected a string")
         .replace("{home}", &util::home::get_home());
 
@@ -18,7 +18,17 @@ pub fn run(args: &mut Vec<String>) {
     cmd.args(args);
 
     let now = time::SystemTime::now();
-    cmd.execute_output().unwrap().stdout;
+    
+    if let Ok(exec) = cmd.execute_output() {
+        if !exec.status.success() {
+            eprintln!("Error: Command execution failed");
+            process::exit(1);
+        }
+        exec.stdout;
+    } else {
+        eprintln!("Error: Unable to execute command");
+        process::exit(1);
+    }
 
     let show_compilation_time = util::config::get_setting("show_time");
     if show_compilation_time.unwrap() == true {

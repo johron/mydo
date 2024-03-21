@@ -1,6 +1,5 @@
 {
-  "runners": {
-    "run": "{home}/.cargo/bin/cargo run",
-    "build": "{home}/.cargo/bin/cargo build"
-  }
+  "run": "{home}/.cargo/bin/cargo run",
+  "build": "{home}/.cargo/bin/cargo build",
+  "runners": {}
 }

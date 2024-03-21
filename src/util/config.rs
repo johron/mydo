@@ -51,7 +51,6 @@ pub fn get_setting(setting: &str) -> Option<Value> {
         eprintln!("Error: 'settings' object not found in ~/.mydo/mydo.json");
     }
 
-    eprintln!("Error: No data in '{}' setting", setting);
     process::exit(1);
 }
 
@@ -68,7 +67,6 @@ pub fn get_init(init: &str) -> Option<Value> {
         eprintln!("Error: 'inits' object not found in ~/.mydo/mydo.json");
     }
 
-    eprintln!("Error: No data in '{}' init", init);
     process::exit(1);
 }
 
@@ -89,16 +87,22 @@ pub fn get_runner(runner: &str) -> Value {
 
 pub fn get_run() -> Option<Value> {
     let config = read_project_config();
-    
-    let run = config["run"].clone();
-    
-    return Some(run);
+
+    if let Some(setting_value) = config.get("run") {
+        return Some(setting_value.clone());
+    } else {
+        eprintln!("Error: Run field not found in ~/.mydo/mydo.json");
+    }
+    process::exit(1);
 }
 
 pub fn get_build() -> Option<Value> {
     let config = read_project_config();
-    
-    let build = config["build"].clone();
-    
-    return Some(build);
+
+    if let Some(setting_value) = config.get("build") {
+        return Some(setting_value.clone());
+    } else {
+        eprintln!("Error: Build field not found in ~/.mydo/mydo.json");
+    }
+    process::exit(1);
 }

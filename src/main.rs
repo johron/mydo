@@ -10,7 +10,7 @@ fn show_help() {
   > mydo [file_name]
   > mydo auto [file_name]
     - Run specified file with preset
-      from ~/.mydo/mydo.json or run
+      from ./mydo.json or run
       through shebang if not present.
   > mydo init [init_name]
     - Initialize a project from
