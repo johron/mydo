@@ -39,17 +39,14 @@ cargo build --release
   "settings": {
     "show_time": true
   },
-  "presets": {
-    "py": "/usr/bin/python3 {file}",
-    "js": "/usr/bin/node {file}"
-  },
   "inits": {
     "python3": "{home}/.mydo/inits/python3.tar",
-    "node": "{home}/.mydo/inits/node.tar"
+    "node": "{home}/.mydo/inits/node.tar",
+    "typescript": "https://example.com/inits/ts.tar",
+    "rust": "{home}/.cargo/bin/cargo init"
   }
 }
 ```
-- Can have all keys
 
 #### ./mydo.json
 ```json
@@ -57,11 +54,8 @@ cargo build --release
   "presets": {
     "run": "{home}/.cargo/bin/cargo run",
     "build": "{home}/.cargo/bin/cargo build",
-    "js": "/usr/bin/node {file}",
-    "ts": "https://example.com/inits/ts.tar"
+    "js": "/usr/bin/node {file}"
   }
 }
 
 ```
-- Cannot have "settings" or "inits" keys in this file. Only "presets" key is valid
-- "run" and "build" in presets are only for this file, I think, they should only be used here
