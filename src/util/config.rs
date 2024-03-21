@@ -72,17 +72,33 @@ pub fn get_init(init: &str) -> Option<Value> {
     process::exit(1);
 }
 
-pub fn get_preset(preset: &str) -> Value {
+pub fn get_runner(runner: &str) -> Value {
     let config = read_project_config();
 
-    let presets = config["presets"].as_object().map(|obj| obj.clone()).unwrap();
+    let runners = config["runners"].as_object().map(|obj| obj.clone()).unwrap();
     
-   for (p, args) in presets {
-       if p == preset {
+   for (p, args) in runners {
+       if p == runner {
            return args;
        }
    }
 
-    eprintln!("Error: Requested preset '{preset}' does not exist");
+    eprintln!("Error: Requested preset '{runner}' does not exist");
     process::exit(1);
+}
+
+pub fn get_run() -> Option<Value> {
+    let config = read_project_config();
+    
+    let run = config["run"].clone();
+    
+    return Some(run);
+}
+
+pub fn get_build() -> Option<Value> {
+    let config = read_project_config();
+    
+    let build = config["build"].clone();
+    
+    return Some(build);
 }

@@ -28,7 +28,7 @@ pub fn auto(parameters: &mut Vec<String>) {
             
         if file == "run" || file == "build" {
         } else {
-            let runner = util::config::get_preset(get_last(file).unwrap()).as_str()
+            let runner = util::config::get_runner(get_last(file).unwrap()).as_str()
                 .expect("Expected a string")
                 .replace("{file}", file)
                 .replace("{home}", &util::home::get_home())

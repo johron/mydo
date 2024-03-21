@@ -3,9 +3,9 @@ use execute::Execute;
 use crate::util;
 
 pub fn build(args: &mut Vec<String>) {
-    let preset = util::config::get_preset("build");
+    let preset = util::config::get_build();
     
-    let runner = preset.as_str()
+    let runner = preset
         .expect("Expected a string")
         .replace("{home}", &util::home::get_home());
 
