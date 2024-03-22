@@ -17,7 +17,7 @@ mydo help
 ## Installation
 ### Automatic: Install script
 ```bash
-curl -fsSL http://sh.johanrong.me/mydo/install.sh | bash
+curl -fsSL https://johanrong.me/install/mydo.sh | bash
 ```
 
 ### Manual: Compile from source
