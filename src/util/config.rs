@@ -39,16 +39,23 @@ fn read_project_config() -> Value {
 }
 
 pub fn get_setting(setting: &str) -> Option<Value> {
-    let config = read_main_config();
+    let mut config = read_project_config();
 
     if let Some(settings) = config["settings"].as_object() {
         if let Some(setting_value) = settings.get(setting) {
             return Some(setting_value.clone());
+        }
+    }
+
+    config = read_main_config();
+    if let Some(settings) = config["settings"].as_object() {
+        if let Some(setting_value) = settings.get(setting) {
+            return Some(setting_value.clone());
         } else {
-            eprintln!("Error: Setting '{}' not found in ~/.mydo/mydo.json", setting);
+            eprintln!("Error: Setting '{}' not found in ~/.mydo/mydo.json or in ./mydo.json", setting);
         }
     } else {
-        eprintln!("Error: 'settings' object not found in ~/.mydo/mydo.json");
+        eprintln!("Error: 'settings' object not found in ~/.mydo/mydo.json or in ./mydo.json");
     }
 
     process::exit(1);
