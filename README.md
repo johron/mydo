@@ -63,6 +63,9 @@ cargo build --release
 `./mydo.json`
 ```json
 {
+  "settings": {
+    "show_time": false
+  },
   "run": "{home}/.cargo/bin/cargo run",
   "build": "{home}/.cargo/bin/cargo build",
   "runners": {
