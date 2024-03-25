@@ -1,4 +1,8 @@
 {
+  "settings": {
+    "show_time": false,
+    "root": "build"
+  },
   "run": "{home}/.cargo/bin/cargo run",
   "build": "{home}/.cargo/bin/cargo build",
   "runners": {}

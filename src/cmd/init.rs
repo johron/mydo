@@ -65,6 +65,10 @@ pub fn init(args: &Vec<String>) {
     }
 
     let conf = r#"{
+    "settings": {
+        "show_time": true
+        "root": "run",
+    },
     "run": "",
     "build": "",
     "runners": {}

@@ -22,8 +22,10 @@ fn main() {
     parameters.remove(0); // Remove the mydo executable from arguments
     
     if parameters.len().clone() == 0 {
-        if !util::config::get_setting("show_time").is_none() {
+        if util::config::get_setting("root").expect("Error: Setting 'root' is not a string?") == "run" {
             cmd::run::run(&mut parameters);
+        } else if util::config::get_setting("root").expect("Error: Setting 'root' is not a string?") == "build" {
+            cmd::build::build(&mut parameters);
         } else {
             println!("mydo (v{})", env!("CARGO_PKG_VERSION"));
             process::exit(0);
