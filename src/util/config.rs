@@ -39,7 +39,7 @@ fn read_project_config() -> Value {
 }
 
 pub fn get_setting(setting: &str) -> Option<Value> {
-    let mut config = read_project_config();
+    let mut config: Value = read_project_config();
 
     if let Some(settings) = config["settings"].as_object() {
         if let Some(setting_value) = settings.get(setting) {

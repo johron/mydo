@@ -6,19 +6,15 @@ use std::{process, env};
 fn show_help() {
     println!("mydo (v{})", env!("CARGO_PKG_VERSION"));
     println!("\
-    Usage: mydo [arg1..]
-  > mydo [file_name]
-  > mydo auto [file_name]
-    - Run specified file with preset
-      from ./mydo.json or run
-      through shebang if not present.
-  > mydo init [init_name]
-    - Initialize a project from
-      the ~/.mydo/mydo.json config
-      file.
-  > mydo help
-    - Show this help message\
-    ")
+    Usage: mydo [args..]\
+    Commands:
+    auto    Run given file.
+    init    Initialize project.
+    run     Run project.
+    build   Build project.
+
+    --version  (-v)   Show mydo version.
+    --help     (-h)   Display this help message.")
 }
 
 fn main() {
@@ -26,11 +22,13 @@ fn main() {
     parameters.remove(0); // Remove the mydo executable from arguments
     
     if parameters.len().clone() == 0 {
-        println!("mydo (v{})", env!("CARGO_PKG_VERSION"));
-        process::exit(0);
-    }
-
-    if parameters[0].as_str() == "auto" {
+        if !util::config::get_setting("show_time").is_none() {
+            cmd::run::run(&mut parameters);
+        } else {
+            println!("mydo (v{})", env!("CARGO_PKG_VERSION"));
+            process::exit(0);
+        }
+    } else if parameters[0].as_str() == "auto" {
         parameters.remove(0);
         cmd::auto::auto(&mut parameters);
     } else if parameters[0].as_str() == "init" {
@@ -42,8 +40,11 @@ fn main() {
     } else if parameters[0].as_str() == "build" {
         parameters.remove(0);
         cmd::build::build(&mut parameters);
-    } else if parameters[0].as_str() == "help" {
+    } else if parameters[0].as_str() == "--help" || parameters[0].as_str() == "-h" {
         show_help();
+        process::exit(0);
+    } else if parameters[0].as_str() == "--version" || parameters[0].as_str() == "-v" {
+        println!("mydo (v{})", env!("CARGO_PKG_VERSION"));
         process::exit(0);
     } else {
         cmd::auto::auto(&mut parameters);
