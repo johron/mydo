@@ -52,7 +52,7 @@ pub fn auto(parameters: &mut Vec<String>) {
             process::exit(1);
         }
 
-        let show_compilation_time = util::config::get_setting("show_time");
+        let show_compilation_time = util::config::get_setting("show_time", None);
         if show_compilation_time.unwrap() == true {
             println!("Time taken: {:.2}s", now.elapsed().unwrap().as_secs_f32()); 
         }
@@ -74,7 +74,7 @@ pub fn auto(parameters: &mut Vec<String>) {
             process::exit(1);
         }
 
-        let show_compilation_time = util::config::get_setting("show_time");
+        let show_compilation_time = util::config::get_setting("show_time", None);
         if show_compilation_time.unwrap() == true {
             println!("Time taken: {:.2}s", now.elapsed().unwrap().as_secs_f32());
         }

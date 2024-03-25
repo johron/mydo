@@ -1,4 +1,4 @@
-use std::{fs, process};
+use std::{fs, path, process};
 use serde_json::{Value};
 use crate::util;
 
@@ -38,7 +38,24 @@ fn read_project_config() -> Value {
     config
 }
 
-pub fn get_setting(setting: &str) -> Option<Value> {
+pub fn get_setting(setting: &str, local: Option<bool>) -> Option<Value> {
+    if local == Some(true) {
+        let path = "./mydo.json";
+        
+        if !path::Path::new(path).exists() {
+            println!("mydo (v{})", env!("CARGO_PKG_VERSION"));
+            process::exit(0);
+        }
+
+        let config: Value = read_project_config();
+        
+        if let Some(settings) = config["settings"].as_object() {
+            if let Some(setting_value) = settings.get(setting) {
+                return Some(setting_value.clone());
+            }
+        }
+    }
+    
     let mut config: Value = read_project_config();
 
     if let Some(settings) = config["settings"].as_object() {
