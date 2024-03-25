@@ -11,7 +11,7 @@ My first rust project so this is probably not very efficient and it uses a lot o
 
 ## Help
 ```bash
-mydo help
+mydo --help
 ```
 
 ## Installation
@@ -64,7 +64,8 @@ cargo build --release
 ```json
 {
   "settings": {
-    "show_time": false
+    "show_time": false,
+    "root": "build"
   },
   "run": "{home}/.cargo/bin/cargo run",
   "build": "{home}/.cargo/bin/cargo build",
