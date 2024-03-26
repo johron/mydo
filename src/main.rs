@@ -6,8 +6,8 @@ use std::{process, env};
 fn show_help() {
     println!("mydo (v{})", env!("CARGO_PKG_VERSION"));
     println!("\
-    Usage: mydo [args..]\
-    Commands:
+    Usage: mydo [args..]
+Commands:
     auto    Run given file.
     init    Initialize project.
     run     Run project.
