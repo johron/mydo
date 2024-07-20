@@ -30,13 +30,7 @@ curl -fsSL https://johanrong.me/install/mydo.sh | bash
   - `~/.mydo/bin/`
     - The `mydo` binary located here
 
-#### Build a debug version
-```bash
-git clone https://github.com/johron/mydo.git
-cd mydo
-cargo build
-```
-#### Build a release version
+#### Build binary
 ```bash
 git clone https://github.com/johron/mydo.git
 cd mydo
