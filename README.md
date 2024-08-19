@@ -1,4 +1,4 @@
-# **This project has been replaced with:** https://github.com/johron/mydo
+# **This project has been replaced with:** https://github.com/johron/pues
 
 # Mydo
 Easy project manager and runner written in rust.
