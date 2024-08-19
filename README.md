@@ -1,6 +1,7 @@
 # Mydo
 Easy project manager and runner written in rust.
 (this project is dead. It works, but definetly has some problems and is not recommended to be dependent on)
+Had some trouble reverting the commits so ended up deleting repo and pushing older commit so the are gone
 
 My first rust project so this is probably not very efficient and it uses a lot of large crates so i makes very large binaries.
 
@@ -13,12 +14,6 @@ My first rust project so this is probably not very efficient and it uses a lot o
 ## Help
 ```bash
 mydo --help
-```
-
-## Installation
-### Automatic: Install script
-```bash
-curl -fsSL https://johanrong.me/install/mydo.sh | bash
 ```
 
 ### Manual: Compile from source
