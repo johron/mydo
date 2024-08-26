@@ -1,5 +1,3 @@
-# **This project has been replaced with:** https://github.com/johron/pues
-
 # Mydo
 Easy project manager and runner written in rust.
 (this project is dead. It works, but definetly has some problems and is not recommended to be dependent on)
